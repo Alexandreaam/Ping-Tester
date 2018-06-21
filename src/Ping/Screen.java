@@ -19,11 +19,21 @@ public class Screen {
     private JButton saveButton;
     private JScrollPane scroll;
     private JProgressBar progressBar1;
+    private JComboBox comboBox1;
     private String OS = System.getProperty("os.name");
     private List<String> commands = new ArrayList<String>();
     private List<String> fullText = new ArrayList<String>();
+    private String[] names = {"North America","Europe West","Europe Nordic & East","Oceania","Latin America","Brazil"};
+    private String[] ips = {"104.160.131.3","104.160.141.3","104.160.142.3","104.160.156.1","104.160.136.3","104.160.152.3"};
 
     public Screen() {
+        comboBox1.addItem(names[0]);
+        comboBox1.addItem(names[1]);
+        comboBox1.addItem(names[2]);
+        comboBox1.addItem(names[3]);
+        comboBox1.addItem(names[4]);
+        comboBox1.addItem(names[5]);
+
         checkPingButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -73,7 +83,7 @@ public class Screen {
         new Thread(() -> {
             commands.clear();
             commands.add("ping");
-            commands.add(textField1.getText());
+            commands.add(ips[comboBox1.getSelectedIndex()]);
             if(OS.contains("Windows"))
                 commands.add("-n");
             else
@@ -87,7 +97,7 @@ public class Screen {
         }).start();
     }
     public static void main(String[] args) throws IOException {
-        JFrame frame = new JFrame("Ping Tester v1.3 by : António Alexandre");
+        JFrame frame = new JFrame("Ping Tester LoL v1.1 by : António Alexandre");
         frame.setContentPane(new Screen().Panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
