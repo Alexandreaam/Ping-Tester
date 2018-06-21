@@ -129,12 +129,12 @@ public class Screen {
                 changeText("ms\n");
                 num++;
             }
-            else if (s.equals("Request timed out.")){
+            else if (s.contains("Request")){
                 changeText(s + "\n");
                 num++;
                 err++;
             }
-            else if (s.contains("Bad value for option -n")){
+            else if (s.contains("Bad value for option -n") || s.contains("invalid count of packets to transmit")){
                 changeText(s + "\n");
                 num++;
             }
