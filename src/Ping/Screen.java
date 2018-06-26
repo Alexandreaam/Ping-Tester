@@ -56,6 +56,16 @@ public class Screen {
                 }
             }
         });
+        textField2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    init();
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
+            }
+        });
     }
     public void save() throws FileNotFoundException, UnsupportedEncodingException {
         new Thread(() -> {
@@ -97,7 +107,7 @@ public class Screen {
         }).start();
     }
     public static void main(String[] args) throws IOException {
-        JFrame frame = new JFrame("Ping Tester LoL v1.1 by : António Alexandre");
+        JFrame frame = new JFrame("Ping Tester LoL v1.2 by : António Alexandre");
         frame.setContentPane(new Screen().Panel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
